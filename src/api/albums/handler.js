@@ -29,8 +29,11 @@ class AlbumsHandler {
 
     // handler untuk mendapatkan data album berdasarkan id
     async getAlbumByIdHandler(request) {
+        // tangkap request params
         const { id } = request.params;
+      // eksekusi service get albumsById
         const album = await this._service.getAlbumById(id);
+        // return hasil eksekusi
         return {
         status: 'success',
         data: {

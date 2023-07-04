@@ -28,7 +28,6 @@ class CollaborationsService {
             text: `INSERT INTO collaborations 
                    VALUES ($1, $2, $3, $4, $5) 
                    RETURNING id`,
-            // variabel yang diinputkan
             values: [id, playlistId, userId, createdAt, createdAt],
         };
 
@@ -51,7 +50,6 @@ class CollaborationsService {
             text: `DELETE FROM collaborations 
                    WHERE playlist_id = $1 AND user_id = $2 
                    RETURNING id`,
-            // variabel yang diinputkan
             values: [playlistId, userId],
         };
 
@@ -74,7 +72,6 @@ class CollaborationsService {
         const query = {
             text: `SELECT * FROM collaborations 
                    WHERE playlist_id = $1 AND user_id = $2`,
-            // variabel yang diinputkan
             values: [playlistId, userId],
         };
 

@@ -60,13 +60,16 @@ class AlbumsService {
 
             // query untuk memunculkan songs id songs title dan song performer serta fungsi join tabel songs dan albums berdasarkan id
             const querySong = {
-                text: 'SELECT songs.id, songs.title, songs.performer FROM albums JOIN songs ON albums.id = songs.album_id WHERE albums.id = $1',
+                text: `SELECT songs.id, songs.title, songs.performer 
+                       FROM songs 
+                       LEFT JOIN albums ON albums.id = songs.album_id 
+                       WHERE albums.id = $1`,
                 values: [id],
             };
             // eksekusi query song dan simpan kedalam variabel resultsong
             const resultSong = await this._pool.query(querySong);
 
-             // there are no songs in the album
+             // jika tidak ada lagu di album
             if (!resultSong.rows.length) {
                 return { ...rows.map(mapAlbumDBToModel)[0], songs: [] };
             }
@@ -110,13 +113,18 @@ class AlbumsService {
         await this._cacheService.delete(`album:${id}`);
     }
 
+    // service untuk update album cover
     async updateAlbumCover(id, coverAlbum) {
+        // query untuk update albums cover
         const query = {
           text: 'UPDATE albums SET cover = $1 WHERE id = $2 RETURNING id',
           values: [coverAlbum, id],
         };
+        // eksekusi query data album
         const { rowCount } = await this._pool.query(query);
+        // cek rowcount
         if (!rowCount) {
+          // jika nilainya tidak ada maka
           throw new NotFoundError('Album gagal diperbaharui, Id tidak ditemukan');
         }
     }

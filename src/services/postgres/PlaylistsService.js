@@ -29,7 +29,6 @@ class PlaylistsService {
             text: `SELECT id,owner 
                    FROM playlists 
                    WHERE id = $1`,
-            // variabel yang diinputkan
             values: [id],
         };
         // simpan ke dalam rows dan hitung rowscountnya
@@ -76,7 +75,6 @@ class PlaylistsService {
             text: `INSERT INTO playlists 
                    VALUES($1,$2,$3,$4,$5) 
                    RETURNING id`,
-            // variabel yang diinputkan
             values: [id, name, owner, createdAt, createdAt],
         };
         // simpan hasil query ke variabel object rows
@@ -101,7 +99,6 @@ class PlaylistsService {
                    WHERE p.owner = $1 
                    OR p.id = $1 
                    OR c.user_id = $1`,
-            // variabel yang diinputkan
             values: [id],
         };
         // simpan hasil query ke variabel object rows
@@ -117,7 +114,6 @@ class PlaylistsService {
             text: `DELETE FROM playlists 
                    WHERE id = $1 
                    RETURNING id`,
-            // variabel yang diinputkan
             values: [id],
         };
         // simpan ke variabel rowCount lalu hitung
@@ -148,7 +144,6 @@ class PlaylistsService {
             text: `INSERT INTO playlist_songs 
                    VALUES($1, $2, $3, $4, $5) 
                    RETURNING id`,
-            // variabel yang diinputkan
             values: [id, playlistId, songId, createdAt, createdAt],
         };
         // simpan kedalam variabel rows
@@ -170,7 +165,6 @@ class PlaylistsService {
                    FROM playlists p
                    LEFT JOIN users u ON p.owner = u.id
                    WHERE p.id = $1`,
-            // variabel yang diinputkan
             values: [playlistId],
         };
 
@@ -180,7 +174,6 @@ class PlaylistsService {
                    FROM playlist_songs ps
                    JOIN songs s ON ps.song_id = s.id
                    WHERE ps.playlist_id = $1`,
-            // variabel yang diinputkan
             values: [playlistId],
           };
 
@@ -198,7 +191,6 @@ class PlaylistsService {
             text: `DELETE FROM playlist_songs 
                    WHERE song_id = $1
                    RETURNING song_id`,
-            // variabel yang diinputkan
             values: [songId],
         };
 
@@ -227,7 +219,6 @@ class PlaylistsService {
             INNER JOIN songs s ON s.id = psa.song_id
             WHERE psa.playlist_id = $1
             ORDER BY psa.time ASC`,
-            // variabel yang diinputkan
             values: [playlistId],
         };
 

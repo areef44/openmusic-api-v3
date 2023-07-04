@@ -1,5 +1,6 @@
+// module fs
 const fs = require('fs');
-
+// definisi class constructor untuk storage service
 class StorageService {
   constructor(folder) {
     this._folder = folder;
@@ -11,6 +12,7 @@ class StorageService {
     }
   }
 
+  // service untuk write file
   writeFile(file, meta) {
     const filename = +new Date() + meta.filename;
     const path = `${this._folder}/${filename}`;
@@ -24,5 +26,5 @@ class StorageService {
     });
   }
 }
-
+// eksport class storage service
 module.exports = { StorageService };

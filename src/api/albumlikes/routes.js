@@ -1,9 +1,11 @@
 const routes = (handler) => [
+    // endpoint untuk get albums like
     {
     method: 'GET',
     path: '/albums/{id}/likes',
     handler: (request, h) => handler.getAlbumLikeHandler(request, h),
     },
+    // endpoint untuk post albums like
     {
       method: 'POST',
       path: '/albums/{id}/likes',
@@ -12,6 +14,7 @@ const routes = (handler) => [
         auth: 'openmusic_jwt',
       },
     },
+    // endpoint untuk delete albums likes
     {
       method: 'DELETE',
       path: '/albums/{id}/likes',
@@ -21,4 +24,5 @@ const routes = (handler) => [
       },
     },
   ];
+// exports module routes
   module.exports = routes;

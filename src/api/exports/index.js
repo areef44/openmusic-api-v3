@@ -1,6 +1,9 @@
+// module exports handler
 const ExportsHandler = require('./handler');
+// module routes song
 const routers = require('./routes');
 
+// plugin exports
 module.exports = {
   name: 'export',
   version: '1.0.0',

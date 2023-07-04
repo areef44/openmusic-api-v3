@@ -1,6 +1,9 @@
+// module uploads handler
 const { UploadsHandler } = require('./handler');
+// module routes uploads
 const routes = require('./routes');
 
+// plugin uploads
 module.exports = {
   name: 'uploads',
   version: '1.0.0',
