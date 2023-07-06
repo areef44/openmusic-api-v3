@@ -16,7 +16,6 @@ class AuthenticationsService {
         const query = {
             text: `INSERT INTO authentications 
                    VALUES($1)`,
-            // variabel yang diinputkan
             values: [token],
         };
         // eksekusi query tanpa mengembalikan nilai dan response
@@ -30,7 +29,6 @@ class AuthenticationsService {
             text: `SELECT token 
                    FROM authentications 
                    WHERE token = $1`,
-            // variabel yang diinputkan
             values: [token],
         };
 
@@ -53,7 +51,6 @@ class AuthenticationsService {
         const query = {
             text: `DELETE FROM authentications 
                    WHERE token = $1`,
-            // variabel yang diinputkan
             values: [token],
         };
 

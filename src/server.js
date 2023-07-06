@@ -167,6 +167,7 @@ const init = async () => {
         validator: collaborationsValidator,
       },
     },
+    // register exports service dan validatornya
     {
       plugin: _exports,
       options: {
@@ -175,6 +176,7 @@ const init = async () => {
         validator: ExportsValidator,
       },
     },
+    // register uploads service dan validatornya
     {
       plugin: uploads,
       options: {
@@ -183,6 +185,7 @@ const init = async () => {
         validator: UploadsValidator,
       },
     },
+    // register albums likes service dan validatornya
     {
       plugin: albumLikes,
       options: {

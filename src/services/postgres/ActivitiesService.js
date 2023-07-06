@@ -19,7 +19,6 @@ class ActivitiesService {
        const query = {
           text: `INSERT INTO playlist_song_activities
           VALUES($1,$2,$3,$4,$5,$6)`,
-          // variabel yang diinputkan
           values: [id, playlistId, songId, userId, 'delete', time],
          };
          // eksekusi query tanpa return nilai atau response

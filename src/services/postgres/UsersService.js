@@ -23,7 +23,6 @@ class UsersService {
             text: `SELECT id, username, fullname,password 
                    FROM users 
                    WHERE username LIKE $1`,
-            // variabel yang diinputkan
             values: [`%${username}`],
         };
 
@@ -59,7 +58,6 @@ class UsersService {
             text: `SELECT id 
                    FROM users 
                    WHERE id = $1`,
-            // variabel yang diinputkan
             values: [userId],
         };
         // simpan dan hitung Rowsnya
@@ -78,7 +76,6 @@ class UsersService {
             text: `SELECT username 
                    FROM users 
                    WHERE username = $1`,
-            // variabel yang diinputkan
             values: [username],
         };
 
@@ -109,7 +106,6 @@ class UsersService {
             text: `INSERT INTO users 
                    VALUES($1,$2,$3,$4,$5,$6) 
                    RETURNING id`,
-            // variabel yang diinputkan
             values: [id, username, fullname, hashedPassword, createdAt, createdAt],
         };
         // simpan datanya ke dalam rows
